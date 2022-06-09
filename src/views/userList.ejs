@@ -18,6 +18,7 @@
             <p>USUARIO: <%=users[i].name %></p>
             <p>EMAIL: <%=users[i].email %></p>
             <p>CONTRASEÑA: <%=users[i].password %></p>
+            <img src="/images/users/<%=users[i].image %>" alt="imagen del usuario" width="10%">
             <form action="/users/delete/<%=users[i].id%>" method="POST">
                 <button type="submit">BORRAR USUARIO</button>
             </form>

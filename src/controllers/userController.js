@@ -19,6 +19,7 @@ let userController ={
             name: req.body.name,
             email: req.body.email,
             password:  req.body.password,
+            image: req.file.filename
         }
 
         users.push(usuarioNuevo)
