@@ -20,5 +20,5 @@ app.use('/users', usersRouter)
 
 
 app.listen(3000,() =>{
-    console.log('servidor corriendo en htpps://localhost:3000')
+    console.log('servidor corriendo en http://localhost:3000')
 })

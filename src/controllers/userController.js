@@ -9,10 +9,10 @@ let userController ={
     list: function(req,res){
         res.render('userList', {users: users})
     },
-    login: function(req,res){
-        res.render('login')
+    register: function(req,res){
+        res.render('register')
     },
-    processLogin: function(req,res){
+    processRegister: function(req,res){
         let users = JSON.parse(fs.readFileSync(fileDB, 'utf-8'))
         let usuarioNuevo = {
             id: users[users.length - 1].id + 1,
