@@ -15,10 +15,12 @@ app.set ('views', path.join(__dirname, '/views'));
 const mainRouter = require('./routes/main')
 const usersRouter = require('./routes/users')
 const productsRouter = require('./routes/products')
+const moviesRouter = require('./routes/movies')
 
 app.use("/", mainRouter)
 app.use('/users', usersRouter)
 app.use('/products', productsRouter)
+app.use('/movies', moviesRouter)
 
 
 app.listen(3000,() =>{
