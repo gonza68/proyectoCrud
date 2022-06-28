@@ -27,6 +27,16 @@ let moviesController = {
             .then((resultado)=>{
                 res.render("peliculasTop", {peliculas: resultado})
             })
+    },
+    filtrar: function(req,res){
+        db.Pelicula.findAll({
+            where: {
+                title: {[Op.like]: '%' + req.body.busqueda + '%'}
+            }
+        })
+        .then((resultado)=>{
+            res.render('peliculasFilter', {peliculas: resultado})
+        })
     }
 }
 
