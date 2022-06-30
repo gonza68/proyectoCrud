@@ -1,30 +1,27 @@
-const { INTEGER } = require("sequelize");
-
 module.exports = (sequelize, dataTypes) =>{
-    let alias= "Pelicula"
+    let alias= "Generos"
     let cols = {
         id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        title:{
+        name:{
             type: dataTypes.STRING
         } ,
-        length:{
-            type: dataTypes.INTEGER
-        } ,
-        rating:{
+        ranking:{
             type: dataTypes.INTEGER
         },
-        genre_id: dataTypes.INTEGER
+        active:{
+            type: dataTypes.INTEGER
+        }
     };
     let config ={
-        tableName: "movies",
+        tableName: "genres",
         timestamps: false
     }
 
-    const Pelicula = sequelize.define(alias,cols, config);
+    const Generos = sequelize.define(alias,cols, config);
 
-    return Pelicula;
+    return Generos;
 }

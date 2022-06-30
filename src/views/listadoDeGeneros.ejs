@@ -1,0 +1,14 @@
+<html>
+
+<body>
+    <h1>Listado de generos</h1>
+    <ul>
+        <% for (let i=0; i < generos.length; i++) { %>
+            <li>
+                <a href="/movies/generos/<%= generos[i].id%> "><%= generos[i].name%></a>
+            </li>
+            <% } %>
+    </ul>
+</body>
+
+</html>

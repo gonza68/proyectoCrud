@@ -1,7 +1,7 @@
 <html>
 
 <body>
-    <h1>Listado de peliculas</h1>
+    <h1>Listado de peliculas filtrado por: <%=filtrado%> </h1>
     <form action="/movies/search" method="post">
         <label for="busqueda">Buscar pelicula</label>
         <input type="text" name="busqueda" id="busqueda">
@@ -11,11 +11,14 @@
 
     <a href="/movies/top">Peliculas top</a>
     <ul>
+        <% if(peliculas !== undefined){%> 
         <% for (let i=0; i < peliculas.length; i++) { %>
             <li>
                 <a href="/movies/<%= peliculas[i].id%> "><%= peliculas[i].title%></a>
             </li>
-            <% } %>
+            <% }} else {%>
+                <h3>No se encontraron peliculas con el parametro: <%=filtrado%></h3>
+            <% } %> 
     </ul>
 </body>
 
