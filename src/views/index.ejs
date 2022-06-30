@@ -1,8 +1,16 @@
 <html>
-    <h1>Holaaa</h1>
-    <a href="/users">USUARIOS</a>
-    <br>
-    <a href="/products">PRODUCTOS</a>
-    <br>
-    <a href="/movies"> PELICULAS (BASE DE DATOS)</a>
+<%- include ('./partials/head') %> 
+<%- include ('./partials/header') %> 
+<body class="body">
+    <h1 class="titulo">Gonzi aprende</h1>
+    <p class="text">Hola este es un proyecto personal de Gonzi, voy a usar este proyecto para ir aplicando todas las cosas que voy aprendiendo acerca de la programación, javascript, css, html, base de datos, entre otros </p>
+    <section class="imagen-index-section">
+        <% for(let i =0; i<imagenes.length; i++) { %> 
+            <article class="imagen-index-article">
+                <img class="imagen-index" src="/images/general/<%=imagenes[i]%> " alt="">
+            </article>
+        <% } %> 
+    </section>
+</body>
+
 </html>

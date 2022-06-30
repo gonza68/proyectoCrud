@@ -9,8 +9,8 @@ let productController ={
         res.render('products', {products: products})
     },
     productsDetail: function(req,res){
-        let productoAMostrar = products.filter(function(product){
-            return product.id = req.body.id
+        let productoAMostrar = products.filter((product)=>{
+            return product.id == req.params.id
         })
         res.render('productDetail', {product: productoAMostrar})
     }
