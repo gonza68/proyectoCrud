@@ -64,7 +64,7 @@ body{
 .article-info{
     display: flex;
     flex-direction: column;
-    border-left: 1px solid lightgray;
+    border-left: 0.5px solid lightgray;
 }
 
 .article-imagen{
@@ -74,26 +74,70 @@ body{
 }
 
 .precio-descuento{
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    align-items: baseline;
-    margin-left: auto;
-    margin-right: auto;
+    width: 70%;
+    margin-left: 15px;
+    border: 1px black solid;
+    height: 20%;
 }
 
 .name-text{
     font-size: 28px;
     text-align: center;
-    margin-left:60px;
+    border-bottom: lightgray 0.5px solid;
+    padding: 10px;
 }
 
 .description-text{
     padding: 10px;
-    border-top: 1px solid lightgray;
+    border-top: 0.5px solid lightgray;
 }
 
 .texto-precio{
     color: green;
-    font-size: 50px;
+    font-size: 40px;
+    width: 50%;
+}
+
+.titulo-producto{
+    color: gray;
+    position: relative;
+    left: 200px;
+    top: 40px;
+}
+
+  
+  .actions-list li {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px 0;
+  }
+  
+  .actions-list i {
+    color: green;
+    font-size: 25px;
+    margin-right: 10px;
+  }
+  
+  .actions-list p {
+    color: gray;
+    font-size: 25px;
+    margin: 0;
+  }
+
+.product-contain{
+    border: 1px solid black;  
+    width: 20%;
+    margin-bottom: 25px;
+    background-color: white;
+}
+
+.product-list-contain{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-list-image{
+    width: 100%;
 }

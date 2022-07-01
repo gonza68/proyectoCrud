@@ -3,6 +3,7 @@
     <%- include ('./partials/header') %>
 
         <body class="body-detail-producto">
+            <h2 class="titulo-producto"><%= product.name %> >>>>>>>>></h2>
             <section class="producto-detalle">
                 <article class="article-imagen">
 
@@ -16,10 +17,20 @@
                 <h1 class="name-text"><%= product.name%></h1>
 
                 <div class="precio-descuento">
-                <p class="texto-precio"><%= product.price%></p>
+                    
+                <p class="texto-precio"><%= product.price%>$</p>
                 <p class="texto-precio"><%= product.discount%>%</p>
                 </div>
-
+                <ul class="actions-list">
+                    <li>
+                        <i class="fas fa-credit-card"></i>
+                        <p>Pagá en 12 cuotas sin interes</p>
+                    </li>
+                    <li>
+                        <i class="fas fa-store"></i>
+                        <p>Retiro gratis en locales del vendedor</p>
+                    </li>
+                </ul>
                 </article>
             </section>
         </body>
