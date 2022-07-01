@@ -1,0 +1,12 @@
+<html>
+    <%- include ('./partials/head') %> 
+    <%- include ('./partials/header') %> 
+
+    <body>
+        <h1>¡ESTAS SEGURO QUE DESEAS ELIMINAR ESTA PELICULA: <%=pelicula.title%>?</h1>
+        <P>Esta accion no se podra revertir, ten cuidado.</P>
+        <form action="/movies/delete/<%=pelicula.id%>?_method=DELETE" method="POST">
+        <button type="submit">ELIMINAR</button>
+        </form>
+    </body>
+</html>

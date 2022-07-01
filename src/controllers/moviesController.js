@@ -89,7 +89,50 @@ let moviesController = {
             .then(function ([resultadoGeneros, resultadoMovies]) {
                 res.render('generosDetail', { genero: resultadoGeneros, peliculas: resultadoMovies })
             })
+    }),
+    edit: ((req,res)=>{
+        db.Pelicula.findByPk(req.params.id)
+        .then((resultado)=>{
+            res.render('peliculaEdit', {pelicula:resultado})
+        })
+    }),
+    processEdit: ((req,res)=>{
+        db.Pelicula.update({
+            ...req.body
+        },
+        {
+            where: {id:req.params.id}
+        })
+        .then((resultado)=>{
+            res.redirect('/movies')
+        })
+    }),
+    create: ((req,res)=>{
+        res.render('peliculaCrear')
+    }),
+    processCreate: ((req,res)=>{
+        db.Pelicula.create({
+            ...req.body
+        })
+        .then (()=>{
+            res.redirect('/movies')
+        })
+    }),
+    delete: ((req,res)=>{
+        db.Pelicula.findByPk(req.params.id)
+        .then((resultado)=>{
+            res.render('peliculaDelete', {pelicula:resultado})
+        })
+    }),
+    destroy: ((req,res)=>{
+        db.Pelicula.destroy({
+            where:{id:req.params.id}
+        })
+        .then (()=>{
+            res.redirect('/movies')
+        })
     })
+
 }
 
 

@@ -1,0 +1,19 @@
+<html>
+    <%- include ('./partials/head') %> 
+    <%- include ('./partials/header') %> 
+    <body>
+        <h1>EDITAR PELICULA: <%=pelicula.title%> </h1>
+        <form action="/movies/edit/<%=pelicula.id%>?_method=PUT" method="POST">
+        <label for="title">Titulo:</label>
+        <input type="text" name="title" id="title" value="<%= pelicula.title %>" required>
+        <br>
+        <label for="length">Duracion:</label>
+        <input type="number" name="length" id="length" value="<%= pelicula.length%>" required>
+        <br>
+        <label for="rating">Rating:</label>
+        <input type="number" name="rating" id="rating" value="<%= pelicula.rating %>" required>
+        <br>
+        <button type="submit">ENVIAR</button>
+        </form>
+    </body>
+</html>

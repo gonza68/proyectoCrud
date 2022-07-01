@@ -18,10 +18,10 @@
     <ul>
         <% for (let i=0; i < peliculas.length; i++) { %>
             <li>
-                <a href="/movies/<%= peliculas[i].id%> "><%= peliculas[i].title%></a>
+                <a href="/movies/detail/<%= peliculas[i].id%> "><%= peliculas[i].title%></a>
             </li>
             <% } %>
     </ul>
-</body>
+    <button><a href="/movies/create">Crear pelicula</a></button>
 
 </html>
