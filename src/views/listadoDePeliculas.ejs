@@ -18,7 +18,11 @@
     <ul>
         <% for (let i=0; i < peliculas.length; i++) { %>
             <li>
-                <a href="/movies/detail/<%= peliculas[i].id%> "><%= peliculas[i].title%></a>
+                <% if(peliculas[i].generos){ %> 
+                <p><a href="/movies/detail/<%= peliculas[i].id%> "><%= peliculas[i].title%></a>   <%= peliculas[i].generos.name %></p>
+                <% } else {%>
+                    <p><a href="/movies/detail/<%= peliculas[i].id%> "><%= peliculas[i].title%></a> Sin genero definido</p>
+                    <% } %>   
             </li>
             <% } %>
     </ul>

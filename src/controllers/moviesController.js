@@ -23,6 +23,17 @@ let moviesController = {
                 res.send(error)
             })
     },
+    list2: ((req,res)=>{
+        db.Pelicula.findAll({
+            include: [{association: "generos"}]
+        })
+        .then(function (peliculas) {  
+                res.render("listadoDePeliculas", { peliculas: peliculas })
+            })
+            .catch((error) => {
+                res.send(error)
+            })
+    }),
     movieDetail: function (req, res) {
         db.Pelicula.findByPk(req.params.id)
             .then(function (pelicula) {
