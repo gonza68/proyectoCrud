@@ -2,25 +2,31 @@
     <%- include ('./partials/head') %> 
     <%- include ('./partials/header') %> 
 <body>
-    <h1>Listado de peliculas filtrado por: <%=filtrado%> </h1>
+    <h1>Listado de peliculas</h1>
     <form action="/movies/search" method="post">
         <label for="busqueda">Buscar pelicula</label>
         <input type="text" name="busqueda" id="busqueda">
         <button type="submit">BUSCAR</button>
     </form>
 
-
-    <a href="/movies/top">Peliculas top</a>
+<div>
+    <a href="/movies/top">Peliculas top</a> 
+</div>
+<div>
+    <a href="/movies/generos">Generos de peliculas</a>
+</div>
+<h3>Peliculas filtradas por: <%=filtrado%> </h3>
     <ul>
-        <% if(peliculas !== undefined){%> 
         <% for (let i=0; i < peliculas.length; i++) { %>
             <li>
-                <a href="/movies/<%= peliculas[i].id%> "><%= peliculas[i].title%></a>
+                <% if(peliculas[i].generos){ %> 
+                <p><a href="/movies/detail/<%= peliculas[i].id%> "><%= peliculas[i].title%></a>   <%= peliculas[i].generos.name %></p>
+                <% } else {%>
+                    <p><a href="/movies/detail/<%= peliculas[i].id%> "><%= peliculas[i].title%></a> Sin genero definido</p>
+                    <% } %>   
             </li>
-            <% }} else {%>
-                <h3>No se encontraron peliculas con el parametro: <%=filtrado%></h3>
-            <% } %> 
+            <% } %>
     </ul>
-</body>
+    <button><a href="/movies/create">Crear pelicula</a></button>
 
 </html>

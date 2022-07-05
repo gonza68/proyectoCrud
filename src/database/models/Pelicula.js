@@ -31,6 +31,13 @@ module.exports = (sequelize, dataTypes) =>{
             as: "generos",
             foreignKey: "genre_id"
         })
+        Pelicula.belongsToMany(models.Actores,{
+            as:"actores",
+            through: "actor_movie",
+            foreignKey: "movie_id",
+            otheKey: "actor_id",
+            timestamps: false
+        })
     }
 
     return Pelicula;

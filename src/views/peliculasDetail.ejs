@@ -5,6 +5,13 @@
         <h1><%=pelicula.title%></h1>
         <p>Duracion: <%=pelicula.length%> minutos</p>
         <p>Esta pelicula tiene un rating de: <%=pelicula.rating%>/10.0 </p>
+        <ul>
+        <% for (let i =0; i < pelicula.actores.length; i++) {%> 
+            <li>
+                <%= pelicula.actores[i].first_name %> <%= pelicula.actores[i].last_name %> 
+            </li>
+        <% } %> 
+        </ul>
         <form action="/movies/edit/<%=pelicula.id%>" method="get">
             <button type="submit">Editar</button>
         </form>

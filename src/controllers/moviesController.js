@@ -13,6 +13,9 @@ const promiseMoviesPK = db.Pelicula.findAll({
     }
 }) */
 
+const peliculasGeneros = db.Pelicula.findAll({
+    include: [{association: "generos"}]})
+
 let moviesController = {
     list: function (req, res) {
         db.Pelicula.findAll()
@@ -35,7 +38,9 @@ let moviesController = {
             })
     }),
     movieDetail: function (req, res) {
-        db.Pelicula.findByPk(req.params.id)
+        db.Pelicula.findByPk(req.params.id, {
+            include: [{association: "actores"}]
+        })
             .then(function (pelicula) {
                 res.render("peliculasDetail", { pelicula: pelicula })
             })
@@ -61,15 +66,16 @@ let moviesController = {
     filtrar: function (req, res) { /* Es un buscador de peliculas en la base de datos */
         db.Pelicula.findAll({
             where: {
-                title: { [Op.like]: '%' + req.body.busqueda + '%' }  /* En este where filtro las peliculas que contengan el string que vino por el body del buscador */
-            }
+                title: { [Op.like]: '%' + req.body.busqueda + '%' },  /* En este where filtro las peliculas que contengan el string que vino por el body del buscador */  
+            },
+            include: [{association: "generos"}]
         })
             .then((resultado) => {
                 res.render('peliculasFilter', { peliculas: resultado, filtrado: req.body.busqueda }) /* A la vista se le puede mandar mas de una clave valor en el objeto literal  */
             })
-            .catch((error) => {
+         /*    .catch((error) => {
                 res.send(error)
-            })
+            }) */
     },
     mostrarGeneros: ((req, res) => {
         db.Generos.findAll()
@@ -153,3 +159,7 @@ module.exports = moviesController
 .then(resultado=>{
     console.log(resultado)
 }) */
+/* db.Actores.findAll()
+.then(resultado=>{
+    console.log(resultado)
+}) */ 
