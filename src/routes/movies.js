@@ -4,7 +4,7 @@ const router = express.Router()
 
 const moviesController = require("../controllers/moviesController")
 
-router.get('/', moviesController.list2)
+router.get('/', moviesController.list2) /* list no trae los generos, en cambio list2 si los trae */
 router.get('/top', moviesController.top)
 router.post('/search', moviesController.filtrar)
 router.get('/generos', moviesController.mostrarGeneros)

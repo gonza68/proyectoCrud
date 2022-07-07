@@ -4,8 +4,11 @@ const methodOverride = require('method-override')
 
 const app = express()
 
+/* Se define la carpeta de donde se tomaran los archivos */
 app.use(express.static(path.join('public')))
+/* Para poder recuperar la informacion que llega en el body de los formularios */
 app.use(express.urlencoded({extended: false}))
+
 app.use(methodOverride('_method'))
 app.use(express.json())
 

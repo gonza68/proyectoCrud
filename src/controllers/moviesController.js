@@ -39,7 +39,7 @@ let moviesController = {
     }),
     movieDetail: function (req, res) {
         db.Pelicula.findByPk(req.params.id, {
-            include: [{association: "actores"}]
+            include: [{association: "actores"}, {association: "generos"}]
         })
             .then(function (pelicula) {
                 res.render("peliculasDetail", { pelicula: pelicula })
@@ -108,9 +108,11 @@ let moviesController = {
             })
     }),
     edit: ((req,res)=>{
-        db.Pelicula.findByPk(req.params.id)
-        .then((resultado)=>{
-            res.render('peliculaEdit', {pelicula:resultado})
+        let promise1 = db.Pelicula.findByPk(req.params.id)
+        let promise2 = db.Generos.findAll()
+        Promise.all([promise1,promise2])
+        .then(([resultado, resultadoGenero])=>{
+            res.render('peliculaEdit', {pelicula:resultado, generos:resultadoGenero})
         })
     }),
     processEdit: ((req,res)=>{
@@ -125,7 +127,11 @@ let moviesController = {
         })
     }),
     create: ((req,res)=>{
-        res.render('peliculaCrear')
+        db.Generos.findAll()
+        .then((generos)=>{
+           res.render('peliculaCrear', {generos: generos}) 
+        })
+        
     }),
     processCreate: ((req,res)=>{
         db.Pelicula.create({

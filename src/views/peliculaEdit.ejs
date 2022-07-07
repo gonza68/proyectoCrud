@@ -13,6 +13,13 @@
         <label for="rating">Rating:</label>
         <input type="number" name="rating" id="rating" value="<%= pelicula.rating %>" required>
         <br>
+        <label for="genre_id">Genero:</label>
+        <select name="genre_id" id="genre_id">
+            <% generos.forEach(genero => { %>
+             <option value="<%=genero.id%>"><%= genero.name %> </option>
+            <% }) %>
+        </select>
+        <br>
         <button type="submit">ENVIAR</button>
         </form>
     </body>

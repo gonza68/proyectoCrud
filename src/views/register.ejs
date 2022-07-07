@@ -2,20 +2,55 @@
     <%- include ('./partials/head') %> 
     <%- include ('./partials/header') %> 
     <h1>CREAR NUEVO USUARIO</h1>
+
+
     <form action="/users/register" method="POST" enctype="multipart/form-data">
         <label for="name">Nombre</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" value="<%= locals.oldData ? oldData.name : null %>">
+        <% if (locals.errors && errors.name) { %>
+          <div style="color: red;">
+            <%= errors.name.msg %> 
+        </div>  
+        <% } %>  
         <br>
         <label for="password">Contraseña</label>
         <input type="password" name="password" id="password">
+        <% if (locals.errors && errors.password) { %>
+            <div style="color: red;">
+              <%= errors.password.msg %> 
+          </div>  
+          <% } %> 
         <br>
         <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="email" value="<%= locals.oldData ? oldData.email : null%>">
+        <% if (locals.errors && errors.email) { %>
+            <div style="color: red;">
+              <%= errors.email.msg %> 
+          </div>  
+          <% } %> 
         <br>
+        <label for="country">País de nacimiento</label>
+        <select name="country" id="country">
+            <option value="">Elejí un país</option>
+            <% let countries = ["Argentina", "Brasil", "Bolivia", "Colombia", "Chile", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela"] %> 
+            <% for (const oneCountry of countries) {%>
+                <option value="<%= oneCountry %>" <%= locals.oldData && (oneCountry === oldData.country) ? "selected" : null  %> > <%= oneCountry %> </option>
+            <% } %>  
+        </select>
+        <% if (locals.errors && errors.country) { %>
+            <div style="color: red;">
+              <%= errors.country.msg %> 
+          </div>  
+          <% } %> 
         <br>
         <label for="image">Imagen de perfil</label>
         <br>
         <input type="file" name="image" id="image">
+        <% if (locals.errors && errors.image) { %>
+            <div style="color: red;">
+              <%= errors.image.msg %> 
+          </div>  
+          <% } %> 
         <br>
         <br>
         <button type="submit">Enviar</button>
