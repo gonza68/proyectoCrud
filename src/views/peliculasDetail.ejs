@@ -5,7 +5,7 @@
         <h1><%=pelicula.title%></h1>
         <p>Duracion: <%=pelicula.length%> minutos</p>
         <p>Esta pelicula tiene un rating de: <%=pelicula.rating%>/10.0 </p>
-        <p>Genero: <%= pelicula.generos.name %> </p>
+        <p>Genero: <%= pelicula.generos ? pelicula.generos.name : "Esta pelicula no tiene un genero asignado" %> </p>
         <ul>
         <% for (let i =0; i < pelicula.actores.length; i++) {%> 
             <li>

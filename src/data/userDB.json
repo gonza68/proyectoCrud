@@ -1,9 +1,26 @@
 [
  {
-  "id": "1",
+  "id": 1,
   "name": "gonzalo",
   "email": "gonzalotflores01@gmail.com",
   "password": "HOLA123",
+  "country": "Argentina",
+  "image": "gonzi-1.jpg"
+ },
+ {
+  "id": 2,
+  "name": "gonza",
+  "email": "gonzalotflores@gmail.com",
+  "password": "chau123",
+  "country": "Argentina",
+  "image": "gonzi-1.jpg"
+ },
+ {
+  "id": 3,
+  "name": "gonzalin",
+  "email": "gonzalotflores02@gmail.com",
+  "password": "chau1234",
+  "country": "Argentina",
   "image": "gonzi-1.jpg"
  }
 ]

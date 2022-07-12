@@ -1,9 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 const {validationResult} = require('express-validator')
-
+const bcryptjs = require('bcryptjs')
 const fileDB = path.join(__dirname , '../data/userDB.json')
 const users = JSON.parse(fs.readFileSync(fileDB, 'utf-8'))
+
+const User =  require('../data/User')
 
 
 let userController ={
@@ -21,24 +23,30 @@ let userController ={
             oldData: req.body
         })
        }
-       return res.send('Pasaron las validaciones no tienes errores')
+       
+       let userInDB = User.findByField("email", req.body.email)
+
+       if (userInDB){
+        return res.render('register',{
+            errors: {
+                email:{
+                    msg: "Este email ya esta registrado"
+                }
+            },
+            oldData: req.body
+        })
+       }
+
+       let userToCreate= {
+        ...req.body,
+        password: bcryptjs.hashSync(req.body.password, 10),
+        image: req.file.filename
+       }
+
+       let userCreated = User.create(userToCreate);
+       return res.redirect('/users/login')
     },
 
-    processRegister2: function(req,res){
-        let users = JSON.parse(fs.readFileSync(fileDB, 'utf-8'))
-        let usuarioNuevo = {
-            id: users[users.length - 1].id + 1,
-            name: req.body.name,
-            email: req.body.email,
-            password:  req.body.password,
-            image: req.file.filename
-        }
-
-        users.push(usuarioNuevo)
-        fs.writeFileSync(fileDB, JSON.stringify(users, null, " "))
-
-        res.redirect('/users')
-    },
     delete: function(req,res){
         let users = JSON.parse(fs.readFileSync(fileDB, 'utf-8'))
 
@@ -46,6 +54,9 @@ let userController ={
         fs.writeFileSync(fileDB, JSON.stringify(usuariosFinales, null, " "))
 
         res.redirect('/users')
+    },
+    login: function(req,res){
+        res.render('login')
     }
 }
 

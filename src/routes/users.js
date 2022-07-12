@@ -44,5 +44,6 @@ router.get('/register', userController.register)
 router.post('/register', upload.single("image"),validations ,userController.processRegister)
 router.get('/', userController.list)
 router.post('/delete/:id', userController.delete)
+router.get('/login', userController.login)
 
 module.exports = router
