@@ -1,6 +1,9 @@
+/* Requires */
 const express = require('express')
 const path = require('path')
 const methodOverride = require('method-override')
+const session = require('express-session')
+
 
 const app = express()
 
@@ -9,11 +12,23 @@ app.use(express.static(path.join('public')))
 /* Para poder recuperar la informacion que llega en el body de los formularios */
 app.use(express.urlencoded({extended: false}))
 
+
+/* Se usa a nivel de aplicacion session */
+app.use(session({
+    secret: 'Esto es un secreto',
+    resave: false,
+    saveUninitialized: false,
+}))
+
 app.use(methodOverride('_method'))
 app.use(express.json())
 
+
+/* Se define el motor de vista en este caso es ejs y se declara que los archivos de views los va a buscar a la carpeta views */
 app.set('view engine', 'ejs')
 app.set ('views', path.join(__dirname, '/views'));
+
+
 
 const mainRouter = require('./routes/main')
 const usersRouter = require('./routes/users')

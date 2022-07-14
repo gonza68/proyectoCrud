@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <%- include ('./partials/head') %>
+    <%- include ('./partials/header') %>
+<body>
+    <div>
+        <h1>Hola <%= user.name %> </h1>
+        <img src="/images/users/<%= user.image%>" alt="imagen del usuario" style="width: 250px">
+        <h2>Email: <%=user.email%></h2>
+    </div>
+</body>
+</html>

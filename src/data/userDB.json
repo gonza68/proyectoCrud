@@ -1,26 +1,10 @@
 [
  {
   "id": 1,
-  "name": "gonzalo",
-  "email": "gonzalotflores01@gmail.com",
-  "password": "HOLA123",
-  "country": "Argentina",
-  "image": "gonzi-1.jpg"
- },
- {
-  "id": 2,
-  "name": "gonza",
+  "name": "Gonzalo Flores",
+  "password": "$2a$10$R0LqZJXLBpPCZm6O/TX0JuhMDrdShawVNOSLr5vzf7TN74IdGBmHK",
   "email": "gonzalotflores@gmail.com",
-  "password": "chau123",
   "country": "Argentina",
-  "image": "gonzi-1.jpg"
- },
- {
-  "id": 3,
-  "name": "gonzalin",
-  "email": "gonzalotflores02@gmail.com",
-  "password": "chau1234",
-  "country": "Argentina",
-  "image": "gonzi-1.jpg"
+  "image": "1657777383324.jpg"
  }
 ]

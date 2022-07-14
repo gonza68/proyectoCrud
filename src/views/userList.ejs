@@ -2,13 +2,10 @@
  <html>
     <%- include ('./partials/head') %> 
     <%- include ('./partials/header') %> 
- <body>
-     
- </body>
- </html>
- <html>
+    
      <h1>LISTA DE USUARIOS!!!</h1>
      <h2><a href="/users/register">Crear nuevo usuario</a></h2>
+     <h2><a href="/users/login">Login de usuario</a></h2> 
      <% for (let i = 0 ; i <users.length ; i++ ){ %>
         <div>
             <p>USUARIO: <%=users[i].name %></p>

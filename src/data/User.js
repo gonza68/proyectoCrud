@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs')    /* ESTE ARCHIVO SIMULA UN MODELO DE UNA BASE DE DATOS Y SIMULA SUS DISTINTOS METODOS */
 
 const User = {
     fileNane: './src/data/userDB.json',
