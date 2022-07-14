@@ -5,5 +5,29 @@
         <a href="/movies"> PELICULAS (BASE DE DATOS)</a>
         <a href="/">HOME</a>
     </nav>
-    <h2 class="titulo-header">Gonzi aprende</h2>
+    <div class="titulo-header"></div>
+        <h2>Gonzi aprende</h2>
+    </div>
+    <nav>
+        <ul class="header-user-navbar">
+            <% if (locals.isLogged) { %>
+                <li>
+                    Hola <%= locals.userLogged.name %> |  
+                </li>
+                <li>
+                    <a href="/users/profile">Perfil | </a>  
+                </li>
+                <li>
+                    <a href="/users/logout">Cerrar sesion</a>  
+                </li>
+                <% } else {%>
+                    <li>
+                        <a href="/users/register">Register</a>
+                    </li>
+                    <li>
+                        <a href="/users/login">Login</a>
+                    </li>
+                    <% } %>
+        </ul>
+    </nav>
 </header>

@@ -13,6 +13,7 @@ let userController = {
         res.render('userList', { users: users })
     },
     register: function (req, res) {
+
         res.render('register')
     },
     processRegister: (req, res) => {
@@ -66,6 +67,9 @@ let userController = {
             if (okPassword) {
                 delete userToLogin.password
                 req.session.userLogged = userToLogin
+                if(req.body.remember){
+                    res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60)*1})
+                }
                 return res.redirect('/users/profile')
             }
             return res.render('login', {
@@ -92,8 +96,8 @@ let userController = {
             
     },
     logout: (req,res)=>{
+        res.clearCookie('userEmail')
         req.session.destroy()
-        console.log(req.session)
         return res.redirect('/')
     }
 }

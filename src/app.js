@@ -3,9 +3,14 @@ const express = require('express')
 const path = require('path')
 const methodOverride = require('method-override')
 const session = require('express-session')
-
+const cookies = require('cookie-parser')
 
 const app = express()
+
+const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
+
+
+
 
 /* Se define la carpeta de donde se tomaran los archivos */
 app.use(express.static(path.join('public')))
@@ -19,6 +24,11 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
 }))
+
+app.use(cookies())
+
+app.use(userLoggedMiddleware)
+
 
 app.use(methodOverride('_method'))
 app.use(express.json())
