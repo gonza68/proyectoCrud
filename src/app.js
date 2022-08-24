@@ -51,6 +51,6 @@ app.use('/products', productsRouter)
 app.use('/movies', moviesRouter)
 
 
-app.listen(3000,() =>{
-    console.log('servidor corriendo en http://localhost:3000')
+app.listen(3001,() =>{
+    console.log('servidor corriendo en http://localhost:3001')
 })

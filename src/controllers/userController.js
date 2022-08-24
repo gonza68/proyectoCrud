@@ -60,28 +60,28 @@ let userController = {
         res.render('login')
     },
     loginProcess: (req, res) => {
-        let userToLogin = User.findByField('email', req.body.email) 
-
-        if (userToLogin) {
-            let okPassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
-            if (okPassword) {
-                delete userToLogin.password
-                req.session.userLogged = userToLogin
-                if(req.body.remember){
-                    res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60)*1})
+        let userToLogin = User.findByField('email', req.body.email)                                     /* Para el proceso de login primero hay que traer al usuario que se intenta logear trayendolo por el email */
+        
+        if (userToLogin) {                                                                               /* si existe este usuario */
+            let okPassword = bcryptjs.compareSync(req.body.password, userToLogin.password);              /* Preguntar si la contraseña es valida */
+            if (okPassword) {                                                                            /* Si es valida */
+                delete userToLogin.password                                                               /* Borramos la contraseña para que no se guarde en session */
+                req.session.userLogged = userToLogin                                                      /* Guardamos al usuario en session */
+                if(req.body.remember){                                                                    /* Si se eligio la opcion de recordar usuario se guarda el email del mismo en cookie */
+                    res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60)*1})    
                 }
-                return res.redirect('/users/profile')
+                return res.redirect('/users/profile') /* Y redirijimos al perfil */
             }
-            return res.render('login', {
+            return res.render('login', {    
                 errors: {
                     email: {
-                        msg: "Las credenciales son invalidas"
+                        msg: "Las credenciales son invalidas"  /* En caso que la contraseña sea false devolver el error */
                     }
                 }
             })
         }
 
-            return res.render('login', {
+            return res.render('login', {                                          /*  En en el caso que no se encuentre el usuario devolver el error */
                 errors: {
                     email: {
                         msg: "No se encuentra este Email en nuestro servidor"
@@ -89,13 +89,13 @@ let userController = {
                 }
             })
     },
-    userProfile: (req,res)=>{
+    userProfile: (req,res)=>{    /* Mandamos la vista con el usuario logeado */
         res.render('userProfile',{
             user: req.session.userLogged
         })
             
     },
-    logout: (req,res)=>{
+    logout: (req,res)=>{    /* Cerramos sesion borrando la session y la cookie y redirigimor al inicio */
         res.clearCookie('userEmail')
         req.session.destroy()
         return res.redirect('/')
